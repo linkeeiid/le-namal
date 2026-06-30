@@ -1,0 +1,27 @@
+PHOTOS DU SITE LE NAMAL
+=======================
+
+Dépose ici les vraies photos du restaurant. Tant qu'une photo est absente,
+le site affiche un joli placeholder rayé (ça ne casse rien).
+
+Noms de fichiers attendus :
+
+  PHOTOS
+  hero-salle.jpg     -> grande photo d'accueil (la salle), format paysage large
+  menu-hero.jpg      -> bandeau en haut de la page Menu (ambiance, fond sombre)
+  menu-events.jpg    -> photo "Événements privés" en bas du Menu (table dressée, fond sombre)
+
+  LOGO (2 versions - tant qu'elles sont absentes, le logo "Le Namal" en SVG
+        s'affiche automatiquement a la place, donc rien n'est cassé)
+  logo-ink.png       -> logo FONCE (pour la barre du haut, fond clair)
+  logo-light.png     -> logo CLAIR/BLANC (pour le hero + les pieds de page, fond sombre)
+  Astuce : exporte le logo en PNG a fond TRANSPARENT. Si tu n'as qu'une seule
+  version, mets la quand meme aux deux noms, on ajustera la couleur ensemble.
+
+Les autres emplacements (portrait Ethan & Lily, plat cuisine, 4 plats de la
+galerie, vignettes du menu) sont pour l'instant des placeholders. On les
+branchera ensemble quand tu auras les photos — il suffira de remplacer les
+blocs .islot par des <img>.
+
+Conseil : photos en .jpg, largeur ~1600px max, compressées (tinypng.com) pour
+que le site reste rapide et 100% gratuit.

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Namal — Restaurant casher · Lyon 6e</title>
+<meta name="description" content="Le Namal — restaurant casher à Lyon 6e (2 rue Baraban). Une cuisine de produits choisis, servie avec chaleur par Ethan & Lily. Réservez votre table en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-bg:#E9E8E5; --c-card:#F4F4F2;
+    --c-bg2:#E2E1DF; --c-bg3:#E5E5E2; --c-bg4:#DEDDDA; --c-bg5:#D7D7D4;
+    --c-dark:#0E0E0E; --c-dark2:#090909;
+    --c-ink:#1A1A1A; --c-ink-hover:#4C4C4C;
+    --c-text:#1C1C1C; --c-text2:#515150; --c-muted:#7E7E7C; --c-label:#979695; --c-faint:#B0AFAD;
+    --c-on-dark:#ECECEC; --c-on-dark-muted:#A5A5A5;
+    --c-script:#1A1A1A;
+    --f-head:'Oswald'; --f-script:'Pinyon Script'; --f-body:'Jost'; --f-serif:'Cormorant Garamond';
+    --r-card:28px; --r-input:13px; --r-btn:999px; --hero-h:94vh;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--c-bg); color:var(--c-text); font-family:var(--f-body),sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100vh; }
+  ::selection{ background:#1A1A1A; color:#E9E8E5; }
+  input::placeholder, textarea::placeholder{ color:rgba(20,20,20,.34); }
+  a{ color:inherit; }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none;} }
+
+  /* ---- interactions (remplacent les style-hover du design) ---- */
+  .nl{ transition:opacity .15s; }
+  .nl:hover{ opacity:.55; }
+  .btn-ink{ transition:background .15s; }
+  .btn-ink:hover{ background:var(--c-ink-hover); }
+  .btn-cream{ transition:opacity .15s; }
+  .btn-cream:hover{ opacity:.88; }
+  .btn-out-dark{ transition:background .15s; }
+  .btn-out-dark:hover{ background:color-mix(in srgb,var(--c-on-dark) 12%,transparent); }
+  .btn-ghost-ink{ transition:all .15s; }
+  .btn-ghost-ink:hover{ background:var(--c-ink); color:var(--c-on-dark); }
+  .link-dark{ transition:opacity .15s; }
+  .link-dark:hover{ opacity:.7; }
+  .pill-out{ transition:background .15s; }
+  .pill-out:hover{ background:color-mix(in srgb,var(--c-on-dark) 10%,transparent); }
+  .fl{ transition:opacity .15s; }
+  .fl:hover{ opacity:.6; }
+  .map-link{ transition:color .15s; }
+  .map-link:hover{ color:var(--c-on-dark); }
+  .ethan-btn{ transition:color .15s; }
+  .ethan-btn:hover{ color:var(--c-on-dark); }
+  .btn-del{ transition:all .15s; }
+  .btn-del:hover{ background:#b0402e; color:#fff; }
+  .fld{ outline:none; transition:border-color .15s; }
+  .fld:focus{ border-color:var(--c-ink); }
+
+  /* ---- emplacements photos (à remplacer par les vraies photos dans /img) ---- */
+  .islot{ background:
+      repeating-linear-gradient(45deg, color-mix(in srgb,var(--c-ink) 5%,transparent) 0 12px, transparent 12px 24px),
+      var(--c-bg4);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--c-label); font-family:var(--f-body),sans-serif; font-size:13px; letter-spacing:.04em; padding:14px; }
+  .islot[data-shape="rounded"]{ border-radius:22px; }
+
+  /* nav burger (mobile) */
+  #navToggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  #navToggle svg{ display:block; }
+  @media (max-width:860px){
+    #navLinks{ position:absolute; top:74px; left:0; right:0; flex-direction:column !important; align-items:stretch !important;
+      gap:0 !important; background:var(--c-bg); box-shadow:0 20px 40px -28px rgba(0,0,0,.5); padding:6px 0; display:none; }
+    #navLinks.open{ display:flex; }
+    #navLinks a{ padding:14px 28px; }
+    #navToggle{ display:block; }
+    .nav-cta{ display:none !important; }
+  }
+</style>
+<script>window.logoFallback=function(i){i.style.display='none';var s=i.nextElementSibling;if(s){s.style.display='block';}};</script>
+</head>
+<body>
+
+<!-- ===== Logo SVG réutilisable (wordmark "Le Namal" + "RESTAURANT") ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wordmark" viewBox="0 0 262 124"><path fill-rule="evenodd" d="M247.42 5.17 L250.17 5.25 L250.92 5.83 L251.25 6.83 L251.25 77.50 L252.08 79.83 L253.17 80.92 L254.67 81.08 L255.58 82.00 L254.75 84.67 L253.17 86.08 L245.67 86.08 L244.25 84.83 L243.08 81.83 L243.08 13.50 L242.08 7.50 L242.67 6.25 L244.67 6.08ZM8.58 10.17 L13.50 10.25 L14.25 11.67 L14.25 77.67 L15.50 78.75 L28.50 78.25 L29.08 79.00 L29.25 80.67 L29.92 82.17 L29.75 85.00 L29.00 85.92 L6.17 86.08 L5.42 85.67 L5.42 25.00 L5.08 11.33 L5.83 10.42ZM84.08 10.83 L86.17 10.75 L88.17 11.25 L90.67 13.92 L91.67 13.92 L93.83 12.42 L96.83 11.08 L99.50 10.75 L104.50 11.08 L108.50 13.25 L109.92 15.00 L110.92 17.17 L111.58 23.33 L111.42 76.33 L112.08 79.17 L114.00 80.75 L115.67 81.08 L116.08 81.67 L115.75 83.33 L113.67 85.92 L105.33 86.08 L104.08 85.17 L103.08 83.00 L102.58 73.00 L102.75 22.50 L102.08 20.00 L101.00 18.92 L99.33 18.08 L96.50 18.08 L94.00 19.08 L92.08 20.67 L91.25 22.00 L91.25 73.33 L91.92 85.50 L91.00 86.08 L83.50 86.08 L82.75 85.50 L82.42 84.00 L82.58 22.50 L81.92 18.50 L80.83 17.25 L78.50 16.75 L78.25 15.00 L79.25 13.17 L81.33 11.25ZM45.08 28.17 L51.00 28.25 L53.00 29.08 L54.67 29.25 L55.50 30.08 L56.50 30.25 L59.08 33.33 L60.08 35.33 L60.08 36.67 L60.92 38.83 L60.92 43.00 L59.92 48.17 L59.08 49.33 L58.75 51.00 L57.08 53.67 L53.67 56.92 L47.17 61.08 L42.75 64.50 L42.92 76.83 L44.08 79.00 L46.17 80.08 L49.33 79.92 L50.92 78.67 L52.08 77.00 L52.08 67.00 L52.67 66.25 L57.00 66.25 L59.00 67.08 L60.08 68.17 L60.25 78.17 L59.92 80.83 L58.92 82.50 L56.83 84.75 L54.00 86.08 L40.33 86.08 L38.17 84.92 L36.25 83.17 L35.08 81.00 L34.92 79.50 L34.25 78.00 L34.25 37.00 L35.42 33.50 L38.50 30.25 L40.67 29.08ZM131.25 28.17 L136.83 28.25 L140.50 29.42 L142.67 30.92 L144.92 33.33 L145.08 34.67 L145.92 36.33 L146.08 78.00 L147.67 80.75 L148.17 81.08 L149.67 81.08 L150.08 81.50 L149.92 84.17 L148.67 85.75 L147.83 86.08 L140.17 86.08 L137.83 84.08 L134.50 86.08 L125.17 86.08 L123.33 85.08 L121.25 82.83 L119.25 77.83 L119.08 70.83 L120.25 66.83 L121.25 64.83 L124.50 61.08 L128.33 58.42 L136.67 53.75 L137.58 52.00 L137.58 39.67 L137.25 38.00 L136.92 37.00 L136.17 36.25 L133.50 35.08 L131.83 35.25 L129.67 36.25 L128.25 39.33 L128.08 45.33 L128.58 49.67 L126.50 50.42 L123.67 50.25 L122.00 49.92 L120.25 48.67 L120.08 35.83 L121.25 32.83 L123.50 30.75 L126.00 29.25 L128.00 28.92 L129.33 28.25ZM157.08 28.17 L161.00 28.25 L164.00 31.08 L164.83 31.25 L167.33 29.42 L169.83 28.42 L171.17 28.08 L174.33 28.08 L177.50 29.25 L180.67 32.25 L184.50 29.25 L187.00 28.25 L191.17 28.08 L194.67 29.42 L196.92 31.50 L198.08 33.33 L199.08 36.50 L199.08 78.33 L199.42 79.50 L201.00 80.92 L202.50 81.08 L203.08 81.50 L202.92 84.00 L201.50 85.92 L193.33 86.08 L191.92 84.83 L191.25 83.67 L190.58 80.50 L190.75 39.83 L190.58 38.50 L189.75 36.83 L188.67 36.08 L184.67 36.25 L182.25 38.67 L181.92 39.67 L181.92 80.83 L182.42 85.67 L181.83 86.08 L174.33 86.08 L173.42 85.00 L173.42 41.00 L172.92 37.17 L171.67 36.25 L170.17 35.92 L167.50 36.25 L165.08 38.50 L164.75 40.33 L164.75 74.83 L165.08 85.67 L164.67 86.08 L157.17 86.08 L156.25 85.50 L156.08 36.83 L154.33 34.42 L153.00 34.25 L152.08 33.67 L152.08 32.17 L153.83 29.25ZM218.92 28.17 L224.83 28.25 L225.50 28.75 L227.83 29.25 L231.08 31.67 L232.92 34.50 L233.92 39.67 L233.75 77.00 L234.25 79.67 L235.67 80.92 L237.67 81.42 L237.92 82.00 L237.75 83.33 L236.92 85.00 L235.50 86.08 L227.50 86.08 L225.83 84.25 L225.17 84.25 L222.17 86.08 L212.83 86.08 L209.42 83.67 L207.42 79.83 L206.42 73.17 L207.25 68.17 L209.42 63.83 L213.00 60.25 L222.00 55.08 L225.08 52.83 L225.08 38.17 L224.75 37.33 L223.50 36.08 L221.83 35.25 L220.17 35.08 L217.33 36.08 L216.08 38.17 L216.08 48.67 L215.92 49.50 L215.33 50.08 L214.50 50.42 L210.17 50.08 L208.17 48.92 L207.58 48.17 L207.25 39.33 L207.92 35.33 L209.25 32.33 L211.50 30.42 L213.83 29.25 L217.00 28.25ZM45.75 35.33 L48.83 35.42 L50.33 36.25 L51.92 38.00 L52.08 44.83 L51.25 47.00 L51.08 48.50 L49.25 51.00 L43.83 55.25 L43.33 55.25 L42.75 54.50 L42.92 37.67 L44.00 36.08ZM224.42 61.67 L225.08 62.17 L225.25 64.67 L225.08 75.83 L223.75 77.67 L221.83 79.08 L220.33 79.58 L217.50 79.08 L216.25 77.67 L215.92 76.67 L215.75 71.17 L216.25 68.67 L218.50 65.25 L221.33 63.75 L223.00 62.25ZM136.25 61.83 L137.00 61.75 L137.58 62.50 L137.75 73.83 L137.25 76.17 L134.83 78.75 L132.33 79.75 L131.50 79.75 L129.50 78.92 L128.25 76.50 L128.08 70.67 L128.92 69.00 L129.08 67.50 L130.42 65.83Z"></path><g transform="translate(27.5,98)"><path d="M25.81 2.13 L29.63 2.19 L30.81 3.50 L31.19 5.00 L31.19 7.00 L30.94 7.63 L30.38 8.06 L29.38 8.06 L28.94 7.63 L28.94 5.38 L27.88 4.06 L27.25 3.94 L26.38 4.19 L26.06 4.50 L25.81 5.63 L25.81 10.38 L26.06 11.38 L26.75 12.06 L28.88 12.31 L29.44 13.25 L29.00 14.06 L27.13 14.31 L26.50 14.69 L25.94 15.50 L25.94 20.50 L26.50 21.19 L27.63 21.31 L28.81 20.63 L29.06 19.88 L28.94 18.63 L29.50 17.94 L30.63 17.94 L31.19 18.50 L31.19 21.00 L30.94 21.88 L29.88 22.94 L28.75 23.31 L26.63 23.44 L25.50 23.19 L23.56 21.50 L23.31 20.63 L23.19 15.63 L23.81 14.50 L24.06 13.13 L23.06 10.63 L23.31 8.88 L23.19 5.13 L24.06 3.25 L25.00 2.44ZM42.56 2.13 L46.50 2.19 L47.94 3.63 L48.19 4.63 L48.19 8.50 L47.94 9.13 L47.13 9.69 L46.63 9.69 L46.06 9.00 L46.06 5.38 L45.50 4.31 L44.88 4.06 L43.50 4.06 L43.06 4.63 L42.81 5.75 L42.94 9.63 L43.31 10.63 L45.75 12.06 L47.50 13.44 L47.94 14.00 L48.19 15.25 L48.31 19.50 L48.06 21.50 L47.81 22.00 L46.75 22.94 L45.13 23.31 L43.00 23.31 L41.63 22.81 L40.56 21.63 L40.19 20.38 L40.19 17.13 L40.44 16.50 L41.50 15.81 L42.50 16.19 L42.81 16.63 L42.81 20.38 L43.25 21.06 L43.88 21.31 L45.00 21.19 L45.94 20.50 L46.06 19.75 L46.06 16.63 L45.69 15.38 L44.63 14.19 L41.75 12.31 L41.06 11.63 L40.19 9.88 L40.19 6.38 L40.44 4.75 L41.31 3.00 L42.00 2.31ZM58.19 2.13 L64.38 2.06 L65.19 2.75 L65.19 3.75 L65.00 3.94 L63.00 4.31 L62.56 4.75 L62.31 5.50 L62.56 22.25 L62.44 22.63 L61.75 23.19 L60.63 23.19 L60.06 22.63 L60.06 5.13 L59.75 4.31 L57.88 4.06 L57.31 3.75 L57.31 2.50ZM76.56 2.13 L80.00 2.06 L81.75 3.06 L82.06 3.63 L82.31 6.00 L82.19 19.00 L82.31 20.38 L83.06 21.38 L83.31 22.25 L83.19 22.75 L82.38 23.31 L81.13 23.19 L80.19 22.63 L80.06 16.25 L79.81 15.50 L79.50 15.19 L78.88 15.06 L77.50 15.06 L76.94 15.50 L76.94 22.63 L75.63 23.31 L74.88 23.06 L74.31 22.50 L74.06 18.88 L74.06 6.38 L74.44 4.38 L75.06 3.38 L76.25 2.19ZM91.69 2.13 L93.63 2.06 L94.19 2.75 L94.44 8.75 L94.31 18.63 L94.56 19.63 L94.44 20.50 L95.38 21.31 L96.88 21.06 L97.81 19.75 L97.81 2.50 L98.38 2.06 L99.50 2.06 L100.06 2.63 L100.06 20.63 L100.94 22.00 L100.81 23.00 L100.25 23.31 L99.38 23.31 L98.25 22.94 L97.38 22.94 L96.25 23.31 L93.63 23.19 L93.13 22.94 L92.19 21.75 L92.06 4.63 L91.19 3.00 L91.19 2.50ZM130.31 2.13 L133.88 2.06 L135.50 3.19 L135.94 3.75 L136.06 20.50 L136.94 22.13 L136.94 22.75 L136.25 23.31 L134.88 23.31 L134.06 22.63 L133.69 20.13 L133.81 15.88 L133.63 15.44 L132.75 15.06 L131.38 15.06 L130.56 15.63 L130.56 22.50 L130.00 23.06 L129.13 23.31 L128.38 23.06 L128.06 22.63 L128.06 4.38 L128.31 3.75 L129.50 2.56ZM164.44 2.13 L170.75 2.06 L171.81 3.13 L171.81 3.63 L171.50 3.94 L169.50 4.06 L168.94 4.63 L168.94 22.50 L168.63 22.94 L167.63 23.31 L166.88 23.06 L166.44 22.63 L166.19 21.38 L166.19 4.50 L165.50 4.06 L164.38 4.06 L163.81 3.63 L163.44 2.63 L163.88 2.19ZM5.56 2.25 L6.38 2.19 L7.50 2.94 L8.25 2.94 L9.75 2.31 L11.50 2.19 L12.94 3.25 L13.44 4.38 L13.94 8.50 L13.81 12.13 L13.44 13.75 L12.06 15.75 L12.06 17.75 L12.44 19.88 L12.81 20.63 L14.06 21.50 L14.06 22.63 L13.50 23.19 L11.63 23.19 L10.56 22.25 L10.06 20.63 L10.06 18.63 L9.13 16.44 L8.50 16.44 L8.06 17.13 L7.94 22.75 L7.50 23.19 L6.63 23.31 L6.25 23.19 L5.69 22.50 L5.56 16.88 L5.81 16.00 L5.81 14.50 L5.56 13.75 L5.56 12.25 L5.81 7.50 L5.56 6.88 L5.69 5.50 L5.31 4.50 L4.56 3.63 L5.19 2.50ZM109.94 2.25 L111.00 2.19 L112.13 2.94 L112.88 2.94 L114.00 2.31 L116.13 2.19 L116.63 2.44 L117.94 3.88 L118.06 13.38 L117.69 14.38 L116.81 15.63 L116.69 16.50 L117.19 20.25 L118.56 21.50 L118.81 22.13 L118.69 22.63 L118.13 23.06 L116.63 23.31 L115.31 22.63 L114.06 17.00 L113.63 16.31 L113.06 16.50 L112.56 17.50 L112.69 22.63 L111.75 23.19 L110.63 23.06 L110.19 22.63 L110.06 4.63 L109.31 3.63 L109.31 2.75ZM146.44 2.25 L147.38 2.19 L148.25 2.94 L148.75 3.06 L150.50 2.19 L151.88 2.19 L153.25 2.81 L154.06 3.88 L154.31 9.13 L154.19 19.88 L154.31 20.50 L154.94 21.25 L155.31 22.25 L155.19 22.75 L154.75 23.19 L153.38 23.31 L152.19 22.63 L152.06 5.50 L151.38 4.44 L150.63 4.19 L149.63 4.31 L148.94 5.50 L149.06 22.38 L148.38 23.19 L147.25 23.19 L146.44 22.63 L146.19 19.88 L146.19 4.88 L145.69 3.75 L145.69 3.00 L145.94 2.50ZM77.94 4.00 L79.00 4.06 L79.50 4.31 L79.94 5.00 L80.06 11.88 L79.81 12.63 L79.50 12.94 L78.88 13.06 L77.50 13.06 L76.94 12.63 L76.94 5.13 L77.19 4.38ZM131.56 4.00 L132.88 4.06 L133.31 4.50 L133.81 5.63 L133.81 12.25 L133.63 12.69 L132.75 13.06 L131.38 13.06 L130.56 12.50 L130.44 5.50 L130.94 4.38ZM9.19 4.38 L10.38 4.31 L10.81 4.63 L11.19 6.75 L11.06 13.25 L10.63 13.94 L9.88 14.19 L8.63 14.06 L8.06 13.63 L8.06 5.38 L8.75 4.56ZM113.56 4.38 L115.13 4.44 L115.69 5.00 L115.94 6.00 L115.94 12.50 L115.19 13.75 L114.38 14.19 L113.25 14.06 L112.69 13.38 L112.81 11.13 L112.44 9.38 L112.81 7.13 L112.81 5.38Z"></path></g></symbol><symbol id="namal" viewBox="0 0 261 92"><path fill-rule="evenodd" d="M247.42 5.17 L250.17 5.25 L250.92 5.83 L251.25 6.83 L251.25 77.50 L252.08 79.83 L253.17 80.92 L254.67 81.08 L255.58 82.00 L254.75 84.67 L253.17 86.08 L245.67 86.08 L244.25 84.83 L243.08 81.83 L243.08 13.50 L242.08 7.50 L242.67 6.25 L244.67 6.08ZM8.58 10.17 L13.50 10.25 L14.25 11.67 L14.25 77.67 L15.50 78.75 L28.50 78.25 L29.08 79.00 L29.25 80.67 L29.92 82.17 L29.75 85.00 L29.00 85.92 L6.17 86.08 L5.42 85.67 L5.42 25.00 L5.08 11.33 L5.83 10.42ZM84.08 10.83 L86.17 10.75 L88.17 11.25 L90.67 13.92 L91.67 13.92 L93.83 12.42 L96.83 11.08 L99.50 10.75 L104.50 11.08 L108.50 13.25 L109.92 15.00 L110.92 17.17 L111.58 23.33 L111.42 76.33 L112.08 79.17 L114.00 80.75 L115.67 81.08 L116.08 81.67 L115.75 83.33 L113.67 85.92 L105.33 86.08 L104.08 85.17 L103.08 83.00 L102.58 73.00 L102.75 22.50 L102.08 20.00 L101.00 18.92 L99.33 18.08 L96.50 18.08 L94.00 19.08 L92.08 20.67 L91.25 22.00 L91.25 73.33 L91.92 85.50 L91.00 86.08 L83.50 86.08 L82.75 85.50 L82.42 84.00 L82.58 22.50 L81.92 18.50 L80.83 17.25 L78.50 16.75 L78.25 15.00 L79.25 13.17 L81.33 11.25ZM45.08 28.17 L51.00 28.25 L53.00 29.08 L54.67 29.25 L55.50 30.08 L56.50 30.25 L59.08 33.33 L60.08 35.33 L60.08 36.67 L60.92 38.83 L60.92 43.00 L59.92 48.17 L59.08 49.33 L58.75 51.00 L57.08 53.67 L53.67 56.92 L47.17 61.08 L42.75 64.50 L42.92 76.83 L44.08 79.00 L46.17 80.08 L49.33 79.92 L50.92 78.67 L52.08 77.00 L52.08 67.00 L52.67 66.25 L57.00 66.25 L59.00 67.08 L60.08 68.17 L60.25 78.17 L59.92 80.83 L58.92 82.50 L56.83 84.75 L54.00 86.08 L40.33 86.08 L38.17 84.92 L36.25 83.17 L35.08 81.00 L34.92 79.50 L34.25 78.00 L34.25 37.00 L35.42 33.50 L38.50 30.25 L40.67 29.08ZM131.25 28.17 L136.83 28.25 L140.50 29.42 L142.67 30.92 L144.92 33.33 L145.08 34.67 L145.92 36.33 L146.08 78.00 L147.67 80.75 L148.17 81.08 L149.67 81.08 L150.08 81.50 L149.92 84.17 L148.67 85.75 L147.83 86.08 L140.17 86.08 L137.83 84.08 L134.50 86.08 L125.17 86.08 L123.33 85.08 L121.25 82.83 L119.25 77.83 L119.08 70.83 L120.25 66.83 L121.25 64.83 L124.50 61.08 L128.33 58.42 L136.67 53.75 L137.58 52.00 L137.58 39.67 L137.25 38.00 L136.92 37.00 L136.17 36.25 L133.50 35.08 L131.83 35.25 L129.67 36.25 L128.25 39.33 L128.08 45.33 L128.58 49.67 L126.50 50.42 L123.67 50.25 L122.00 49.92 L120.25 48.67 L120.08 35.83 L121.25 32.83 L123.50 30.75 L126.00 29.25 L128.00 28.92 L129.33 28.25ZM157.08 28.17 L161.00 28.25 L164.00 31.08 L164.83 31.25 L167.33 29.42 L169.83 28.42 L171.17 28.08 L174.33 28.08 L177.50 29.25 L180.67 32.25 L184.50 29.25 L187.00 28.25 L191.17 28.08 L194.67 29.42 L196.92 31.50 L198.08 33.33 L199.08 36.50 L199.08 78.33 L199.42 79.50 L201.00 80.92 L202.50 81.08 L203.08 81.50 L202.92 84.00 L201.50 85.92 L193.33 86.08 L191.92 84.83 L191.25 83.67 L190.58 80.50 L190.75 39.83 L190.58 38.50 L189.75 36.83 L188.67 36.08 L184.67 36.25 L182.25 38.67 L181.92 39.67 L181.92 80.83 L182.42 85.67 L181.83 86.08 L174.33 86.08 L173.42 85.00 L173.42 41.00 L172.92 37.17 L171.67 36.25 L170.17 35.92 L167.50 36.25 L165.08 38.50 L164.75 40.33 L164.75 74.83 L165.08 85.67 L164.67 86.08 L157.17 86.08 L156.25 85.50 L156.08 36.83 L154.33 34.42 L153.00 34.25 L152.08 33.67 L152.08 32.17 L153.83 29.25ZM218.92 28.17 L224.83 28.25 L225.50 28.75 L227.83 29.25 L231.08 31.67 L232.92 34.50 L233.92 39.67 L233.75 77.00 L234.25 79.67 L235.67 80.92 L237.67 81.42 L237.92 82.00 L237.75 83.33 L236.92 85.00 L235.50 86.08 L227.50 86.08 L225.83 84.25 L225.17 84.25 L222.17 86.08 L212.83 86.08 L209.42 83.67 L207.42 79.83 L206.42 73.17 L207.25 68.17 L209.42 63.83 L213.00 60.25 L222.00 55.08 L225.08 52.83 L225.08 38.17 L224.75 37.33 L223.50 36.08 L221.83 35.25 L220.17 35.08 L217.33 36.08 L216.08 38.17 L216.08 48.67 L215.92 49.50 L215.33 50.08 L214.50 50.42 L210.17 50.08 L208.17 48.92 L207.58 48.17 L207.25 39.33 L207.92 35.33 L209.25 32.33 L211.50 30.42 L213.83 29.25 L217.00 28.25ZM45.75 35.33 L48.83 35.42 L50.33 36.25 L51.92 38.00 L52.08 44.83 L51.25 47.00 L51.08 48.50 L49.25 51.00 L43.83 55.25 L43.33 55.25 L42.75 54.50 L42.92 37.67 L44.00 36.08ZM224.42 61.67 L225.08 62.17 L225.25 64.67 L225.08 75.83 L223.75 77.67 L221.83 79.08 L220.33 79.58 L217.50 79.08 L216.25 77.67 L215.92 76.67 L215.75 71.17 L216.25 68.67 L218.50 65.25 L221.33 63.75 L223.00 62.25ZM136.25 61.83 L137.00 61.75 L137.58 62.50 L137.75 73.83 L137.25 76.17 L134.83 78.75 L132.33 79.75 L131.50 79.75 L129.50 78.92 L128.25 76.50 L128.08 70.67 L128.92 69.00 L129.08 67.50 L130.42 65.83Z"></path></symbol><symbol id="emblem" viewBox="0 0 240 240"><circle cx="120" cy="120" r="103" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-dasharray="600 47" transform="rotate(-58 120 120)"></circle><circle cx="120" cy="120" r="103" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="3 36" transform="rotate(-58 120 120)" opacity="0.55"></circle><use href="#wordmark" fill="currentColor" transform="translate(47,87) scale(0.557)"></use></symbol></svg>
+
+<!-- ============ NAV ============ -->
+<nav style="position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--c-bg) 88%, transparent); backdrop-filter:blur(12px); box-shadow:0 14px 36px -28px rgba(0,0,0,.4);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:20px; position:relative;">
+    <a href="#top" style="display:flex; align-items:center; flex-shrink:0; text-decoration:none;"><img src="img/logo-ink.png" alt="Le Namal" style="height:50px; width:auto; display:block;" onerror="logoFallback(this)"><svg style="height:54px; width:auto; display:none; color:var(--c-ink);" viewBox="0 0 240 240"><use href="#emblem"/></svg></a>
+    <div id="navLinks" style="display:flex; align-items:center; gap:30px;">
+      <a href="#histoire" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Histoire</a>
+      <a href="#cuisine" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Cuisine</a>
+      <a href="menu.html#menu" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Menu</a>
+      <a href="#galerie" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Galerie</a>
+      <a href="#horaires" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Horaires</a>
+      <a href="#contact" class="nl" style="font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-text); text-decoration:none;">Contact</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+      <a href="#reservation" class="btn-ink nav-cta" style="background:var(--c-ink); color:var(--c-on-dark); font-family:var(--f-body),sans-serif; font-size:12px; letter-spacing:.12em; text-transform:uppercase; padding:13px 22px; border-radius:var(--r-btn); text-decoration:none;">Réserver</a>
+      <button id="navToggle" aria-label="Menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--c-ink)" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" style="position:relative; min-height:var(--hero-h); display:flex; align-items:flex-end; overflow:hidden; background:var(--c-dark);">
+  <img id="heroImg" src="img/hero-salle.jpg" alt="La salle du restaurant Le Namal" onerror="this.style.display='none'" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 38%;">
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 70% 20%, rgba(0,0,0,.15) 0%, rgba(0,0,0,.5) 55%, rgba(0,0,0,.82) 100%);"></div>
+  <div style="position:absolute; left:0; right:0; bottom:0; height:38%; pointer-events:none; background:linear-gradient(180deg, color-mix(in srgb,var(--c-bg),transparent 100%) 0%, var(--c-bg) 100%);"></div>
+  <div style="position:relative; pointer-events:none; max-width:1240px; width:100%; margin:0 auto; padding:0 28px 9vh;">
+    <h1 style="margin:0; color:var(--c-on-dark); line-height:0;">
+      <span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Le Namal — Restaurant</span>
+      <span role="img" aria-label="Le Namal — Restaurant" style="display:block;">
+        <svg viewBox="0 0 261 92" style="display:block; height:clamp(104px,17vw,158px); width:auto; max-width:86vw; fill:var(--c-on-dark);"><use href="#namal"/></svg>
+        <span style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:0.46em; text-transform:uppercase; font-size:clamp(16px,2.5vw,30px); line-height:1; color:var(--c-on-dark); margin-top:9px; padding-left:0.46em;">Restaurant</span>
+      </span>
+    </h1>
+    <p style="font-family:var(--f-serif); font-style:italic; font-size:clamp(19px,2.4vw,26px); color:color-mix(in srgb,var(--c-on-dark) 88%,transparent); max-width:560px; margin:24px 0 0; line-height:1.4;">Une cuisine casher de produits choisis, servie avec chaleur au cœur du 6<sup>e</sup>. Depuis deux ans, le goût du vrai et le sens de la table.</p>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:32px; pointer-events:auto;">
+      <a href="#reservation" class="btn-cream" style="background:var(--c-on-dark); color:var(--c-dark); font-family:var(--f-head); font-weight:500; font-size:14px; letter-spacing:.1em; text-transform:uppercase; padding:16px 30px; border-radius:var(--r-btn); text-decoration:none;">Réserver une table</a>
+      <a href="#histoire" class="btn-out-dark" style="border:1px solid color-mix(in srgb,var(--c-on-dark) 50%,transparent); color:var(--c-on-dark); font-family:var(--f-head); font-weight:500; font-size:14px; letter-spacing:.1em; text-transform:uppercase; padding:16px 30px; border-radius:var(--r-btn); text-decoration:none;">Notre histoire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTOIRE ============ -->
+<section id="histoire" style="background:var(--c-bg); padding:clamp(64px,8vw,118px) 0 clamp(40px,6vw,80px);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(40px,5vw,80px); align-items:center;">
+    <div>
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">Notre histoire</div>
+      <div style="margin-top:10px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,46px); color:var(--c-ink); line-height:1;">Ethan &amp;</span>
+        <span style="font-family:var(--f-script); font-size:clamp(44px,5.6vw,68px); color:var(--c-script); line-height:.7; margin-left:6px;">Lily</span>
+      </div>
+      <p style="font-family:var(--f-serif); font-size:clamp(19px,2.2vw,23px); color:var(--c-text2); line-height:1.55; margin:24px 0 0; max-width:520px;">Il y a deux ans, Ethan et Lily ouvraient Le Namal avec une idée simple : recevoir comme à la maison, sans rien céder sur la qualité. Une cuisine <em>casher</em>, une sélection rigoureuse des produits, et l'envie sincère de faire plaisir.</p>
+      <p style="font-family:var(--f-body),sans-serif; font-size:16px; color:var(--c-muted); line-height:1.7; margin:18px 0 0; max-width:520px;">De la table dressée au dernier dessert, chaque détail porte leur exigence et leur générosité. C'est cette attention, discrète et constante, qui fait revenir nos habitués.</p>
+      <div id="ln-stats" style="display:flex; gap:38px; margin-top:34px; flex-wrap:wrap;">
+        <div><div style="font-family:var(--f-head); font-weight:700; font-size:34px; color:var(--c-ink);">2&nbsp;ans</div><div style="font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--c-label); margin-top:2px;">d'ouverture</div></div>
+        <div><div style="font-family:var(--f-head); font-weight:700; font-size:34px; color:var(--c-ink);">100&nbsp;%</div><div style="font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--c-label); margin-top:2px;">casher</div></div>
+        <div><div style="font-family:var(--f-head); font-weight:700; font-size:34px; color:var(--c-ink);">Lyon&nbsp;6<sup>e</sup></div><div style="font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--c-label); margin-top:2px;">2 rue Baraban</div></div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <img src="img/ethan-rigolade.jpg" alt="Ethan &amp; Lily" style="width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 20%; display:block; border-radius:22px;">
+      <div style="position:absolute; bottom:-14px; left:-10px; background:var(--c-ink); color:var(--c-on-dark); padding:16px 22px; border-radius:var(--r-card); max-width:240px; box-shadow:0 20px 50px -24px rgba(0,0,0,.6);">
+        <div style="font-family:var(--f-script); font-size:32px; line-height:.9;">Bienvenue</div>
+        <div style="font-size:13px; color:var(--c-on-dark-muted); margin-top:4px; line-height:1.4;">« On voulait un endroit où l'on se sent attendu. »</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUISINE ============ -->
+<section id="cuisine" style="background:linear-gradient(180deg,var(--c-bg) 0%, var(--c-bg2) 100%); padding:clamp(48px,7vw,96px) 0;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(40px,5vw,80px); align-items:center;">
+    <div style="order:1;">
+      <div class="islot" data-shape="rounded" style="width:100%; aspect-ratio:5/6;">Plat dressé / cuisine en action</div>
+    </div>
+    <div style="order:2;">
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">Notre cuisine</div>
+      <div style="margin-top:10px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,46px); color:var(--c-ink); line-height:1;">Le goût du</span>
+        <span style="font-family:var(--f-script); font-size:clamp(44px,5.6vw,68px); color:var(--c-script); line-height:.7; margin-left:8px;">vrai</span>
+      </div>
+      <p style="font-family:var(--f-serif); font-size:clamp(19px,2.2vw,23px); color:var(--c-text2); line-height:1.55; margin:24px 0 0; max-width:520px;">Des produits choisis un à un, une sélection casher rigoureuse, et le respect du produit jusque dans l'assiette. Rien d'inutile : du goût, de la franchise, du soin.</p>
+      <div style="margin-top:28px; background:var(--c-ink); color:var(--c-on-dark); border-radius:var(--r-card); padding:26px 28px; max-width:520px; box-shadow:0 30px 60px -34px rgba(0,0,0,.6);">
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:16px;">
+          <li style="display:flex; gap:14px; align-items:baseline;"><span style="font-size:16px; color:var(--c-on-dark); line-height:1.45;">Sélection rigoureuse, certifiée casher</span></li>
+          <li style="display:flex; gap:14px; align-items:baseline;"><span style="font-size:16px; color:var(--c-on-dark); line-height:1.45;">Produits frais, travaillés à la commande</span></li>
+          <li style="display:flex; gap:14px; align-items:baseline;"><span style="font-size:16px; color:var(--c-on-dark); line-height:1.45;">Une carte courte, de saison, qui évolue</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section id="galerie" style="background:linear-gradient(180deg,var(--c-bg2) 0%, var(--c-bg3) 100%); padding:clamp(56px,7vw,104px) 0;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px;">
+    <div style="text-align:center; margin-bottom:46px;">
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">À la carte</div>
+      <div style="margin-top:8px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,46px); color:var(--c-ink); line-height:1;">Nos plats</span>
+        <span style="font-family:var(--f-script); font-size:clamp(44px,5.6vw,68px); color:var(--c-script); line-height:.7; margin-left:8px;">signatures</span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px;">
+      <div class="islot" data-shape="rounded" style="width:100%; aspect-ratio:3/4;">Plat 1</div>
+      <div class="islot" data-shape="rounded" style="width:100%; aspect-ratio:3/4; margin-top:34px;">Plat 2</div>
+      <div class="islot" data-shape="rounded" style="width:100%; aspect-ratio:3/4;">Plat 3</div>
+      <div class="islot" data-shape="rounded" style="width:100%; aspect-ratio:3/4; margin-top:34px;">Plat 4</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORAIRES ============ -->
+<section id="horaires" style="background:linear-gradient(180deg,var(--c-bg3) 0%, var(--c-bg2) 100%); padding:clamp(56px,7vw,104px) 0;">
+  <div style="max-width:880px; margin:0 auto; padding:0 28px;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">Ouverture</div>
+      <div style="margin-top:8px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,46px); color:var(--c-ink); line-height:1;">Nos</span>
+        <span style="font-family:var(--f-script); font-size:clamp(44px,5.6vw,68px); color:var(--c-script); line-height:.7; margin-left:8px;">horaires</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; padding:18px 26px; background:color-mix(in srgb,var(--c-card) 70%,transparent); border-radius:var(--r-input);">
+        <div style="font-family:var(--f-head); font-weight:600; text-transform:uppercase; font-size:16px; letter-spacing:.04em; color:var(--c-ink);">Lundi — Jeudi</div>
+        <div style="text-align:right; font-size:15px; color:var(--c-text2);">Déjeuner 12:00–15:00&nbsp;&nbsp;·&nbsp;&nbsp;Dîner 19:00–22:30</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; padding:18px 26px; background:color-mix(in srgb,var(--c-card) 45%,transparent); border-radius:var(--r-input);">
+        <div style="font-family:var(--f-head); font-weight:600; text-transform:uppercase; font-size:16px; letter-spacing:.04em; color:var(--c-ink);">Vendredi</div>
+        <div style="text-align:right; font-size:15px; color:var(--c-text2);">Déjeuner 12:00–15:00</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; padding:18px 26px; background:color-mix(in srgb,var(--c-card) 70%,transparent); border-radius:var(--r-input); opacity:.6;">
+        <div style="font-family:var(--f-head); font-weight:600; text-transform:uppercase; font-size:16px; letter-spacing:.04em; color:var(--c-ink);">Samedi</div>
+        <div style="text-align:right; font-family:var(--f-serif); font-style:italic; font-size:18px; color:var(--c-faint);">Fermé</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; padding:18px 26px; background:color-mix(in srgb,var(--c-card) 45%,transparent); border-radius:var(--r-input);">
+        <div style="font-family:var(--f-head); font-weight:600; text-transform:uppercase; font-size:16px; letter-spacing:.04em; color:var(--c-ink);">Dimanche</div>
+        <div style="text-align:right; font-size:15px; color:var(--c-text2);">Dîner 19:00–22:30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" style="background:linear-gradient(180deg,var(--c-bg2) 0%, var(--c-bg4) 100%); padding:clamp(56px,7vw,104px) 0;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 28px;">
+    <div style="text-align:center; margin-bottom:50px;">
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">Sur place &amp; autour</div>
+      <div style="margin-top:8px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,46px); color:var(--c-ink); line-height:1;">Nos</span>
+        <span style="font-family:var(--f-script); font-size:clamp(44px,5.6vw,68px); color:var(--c-script); line-height:.7; margin-left:8px;">services</span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:34px 20px;">
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="1.4"></circle><path d="M11 7.5l1 5.5h4"></path><circle cx="10" cy="15" r="4.4"></circle><path d="M12.4 12.5 8.6 12.5"></path></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">Accessible PMR</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M4.2 7.5 19.8 16.5"></path><path d="M19.8 7.5 4.2 16.5"></path><path d="M12 6.4 9.6 5M12 6.4 14.4 5M12 17.6l-2.4 1.4M12 17.6l2.4 1.4"></path></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">Climatisation</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5l1.5 4L16 9l-4.5 1.5L10 15l-1.5-4.5L4 9l4.5-1.5z"></path><path d="M17.5 13.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"></path></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">Événements privés</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1 11.5h-9z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">À emporter</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9.5a11 11 0 0 1 15 0"></path><path d="M7.5 12.8a6.5 6.5 0 0 1 9 0"></path><circle cx="12" cy="16.5" r="1.1" fill="var(--c-on-dark)" stroke="none"></circle></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">Wi-Fi gratuit</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;">
+        <div style="width:78px; height:78px; border-radius:50%; background:var(--c-ink); display:flex; align-items:center; justify-content:center; box-shadow:0 18px 36px -22px rgba(0,0,0,.6);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--c-on-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="10" r="1.5"></circle><circle cx="12" cy="8.4" r="1.5"></circle><circle cx="16.5" cy="10" r="1.5"></circle><path d="M12 12.4c-2.3 0-4 1.7-4 3.5 0 1.3 1 2 2.2 2 .8 0 1.1-.3 1.8-.3s1 .3 1.8.3c1.2 0 2.2-.7 2.2-2 0-1.8-1.7-3.5-4-3.5z"></path></svg>
+        </div>
+        <div style="font-size:14px; letter-spacing:.04em; color:var(--c-text2); line-height:1.35;">Animaux autorisés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVATION ============ -->
+<section id="reservation" style="background:linear-gradient(180deg,var(--c-bg4) 0%, var(--c-bg) 22%, var(--c-bg) 100%); padding:clamp(56px,7vw,104px) 0 clamp(64px,8vw,118px);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,5vw,72px); align-items:start;">
+    <div style="position:sticky; top:100px;">
+      <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">Votre table</div>
+      <div style="margin-top:10px;">
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,52px); color:var(--c-ink); line-height:1;">Réserver</span>
+        <span style="font-family:var(--f-script); font-size:clamp(46px,6vw,74px); color:var(--c-script); line-height:.7; margin-left:8px;">en ligne</span>
+      </div>
+      <p style="font-family:var(--f-serif); font-size:clamp(19px,2.2vw,23px); color:var(--c-text2); line-height:1.55; margin:22px 0 0; max-width:440px;">Choisissez votre service et votre créneau — nous ne proposons que les horaires réellement ouverts ce jour-là. Une confirmation s'affiche dès votre demande envoyée.</p>
+      <div id="ln-group" style="margin-top:28px; padding:22px 24px; background:var(--c-ink); color:var(--c-on-dark); border-radius:var(--r-card); max-width:440px;">
+        <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:11px; color:var(--c-on-dark-muted); margin-bottom:8px;">Groupes</div>
+        <p style="font-size:15px; color:var(--c-on-dark); line-height:1.5; margin:0;">À partir de 13 couverts, contactez-nous directement au <strong>04&nbsp;78&nbsp;52&nbsp;37&nbsp;38</strong> pour organiser votre événement.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--c-card); border-radius:var(--r-card); padding:clamp(24px,3.4vw,40px); box-shadow:0 40px 80px -44px rgba(0,0,0,.45);">
+
+      <!-- Confirmation (remplie par JS) -->
+      <div id="resConf" hidden></div>
+
+      <!-- Formulaire -->
+      <form id="resForm" novalidate>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px;">
+          <div>
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Nom complet</label>
+            <input id="f-nom" class="fld" placeholder="Votre nom" style="width:100%; padding:13px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+            <div class="err" id="e-nom"></div>
+          </div>
+          <div>
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Téléphone</label>
+            <input id="f-tel" class="fld" placeholder="06 12 34 56 78" style="width:100%; padding:13px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+            <div class="err" id="e-tel"></div>
+          </div>
+          <div>
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Email</label>
+            <input id="f-email" class="fld" placeholder="vous@email.com" style="width:100%; padding:13px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+            <div class="err" id="e-email"></div>
+          </div>
+          <div>
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Date</label>
+            <input id="f-date" class="fld" type="date" style="width:100%; padding:12px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+            <div class="err" id="e-date"></div>
+          </div>
+        </div>
+
+        <div id="dayWarn"></div>
+
+        <div id="serviceBlock" hidden>
+          <div style="margin-top:24px;">
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:9px;">Service</label>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <button type="button" id="btn-dej" data-svc="dejeuner"></button>
+              <button type="button" id="btn-din" data-svc="diner"></button>
+            </div>
+            <div class="err" id="e-service"></div>
+          </div>
+          <div id="slotBlock" hidden>
+            <div style="margin-top:22px;">
+              <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:9px;">Créneau</label>
+              <div id="slots" style="display:flex; gap:9px; flex-wrap:wrap;"></div>
+              <div class="err" id="e-creneau"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:18px; margin-top:24px; align-items:start;">
+          <div style="flex:0 0 110px;">
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Couverts</label>
+            <input id="f-couverts" class="fld" type="number" min="1" max="12" value="2" style="width:100%; padding:13px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+          </div>
+          <div style="flex:1 1 200px;">
+            <label style="display:block; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:11px; color:var(--c-muted); margin-bottom:7px;">Demandes particulières</label>
+            <input id="f-demandes" class="fld" placeholder="Allergies, occasion, emplacement…" style="width:100%; padding:13px 14px; border:1px solid color-mix(in srgb,var(--c-ink) 18%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; color:var(--c-text);">
+          </div>
+        </div>
+        <div class="err" id="e-couverts"></div>
+
+        <button type="submit" class="btn-ink" style="width:100%; margin-top:28px; background:var(--c-ink); color:var(--c-on-dark); font-family:var(--f-head); font-weight:500; letter-spacing:.12em; text-transform:uppercase; font-size:15px; padding:17px; border:none; border-radius:var(--r-input); cursor:pointer;">Envoyer ma demande</button>
+        <p style="text-align:center; font-size:12.5px; color:var(--c-label); margin:14px 0 0;">Réservation traitée par l'équipe du Namal — réponse rapide par téléphone ou email.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT + FOOTER ============ -->
+<section id="contact" style="background:linear-gradient(180deg,var(--c-bg) 0%, var(--c-dark) 14%, var(--c-dark2) 60%); color:var(--c-on-dark); padding:clamp(80px,9vw,130px) 0 0;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(36px,5vw,60px); align-items:start;">
+      <div>
+        <div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-on-dark-muted);">Nous trouver</div>
+        <div style="margin-top:8px;">
+          <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(28px,3.6vw,42px); color:var(--c-on-dark); line-height:1;">Infos</span>
+          <span style="font-family:var(--f-script); font-size:clamp(42px,5vw,62px); color:var(--c-on-dark); line-height:.7; margin-left:8px;">pratiques</span>
+        </div>
+        <div style="margin-top:28px; display:grid; gap:20px;">
+          <div>
+            <div style="font-family:var(--f-head); font-weight:500; letter-spacing:.12em; text-transform:uppercase; font-size:11px; color:var(--c-on-dark-muted); margin-bottom:5px;">Adresse</div>
+            <div style="font-size:17px; color:var(--c-on-dark);">2 Rue Baraban, 69006 Lyon</div>
+          </div>
+          <div>
+            <div style="font-family:var(--f-head); font-weight:500; letter-spacing:.12em; text-transform:uppercase; font-size:11px; color:var(--c-on-dark-muted); margin-bottom:5px;">Téléphone</div>
+            <a href="tel:+33478523738" class="link-dark" style="font-size:17px; color:var(--c-on-dark); text-decoration:none;">04 78 52 37 38</a>
+          </div>
+          <div>
+            <div style="font-family:var(--f-head); font-weight:500; letter-spacing:.12em; text-transform:uppercase; font-size:11px; color:var(--c-on-dark-muted); margin-bottom:5px;">Email</div>
+            <a href="mailto:contact@lenamal-lyon.fr" class="link-dark" style="font-size:17px; color:var(--c-on-dark); text-decoration:none;">contact@lenamal-lyon.fr</a>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:6px;">
+            <a href="https://www.instagram.com/lenamallyon/" target="_blank" rel="noopener" class="pill-out" style="padding:9px 18px; border:1px solid color-mix(in srgb,var(--c-on-dark) 30%,transparent); border-radius:var(--r-btn); font-size:13px; letter-spacing:.06em; color:var(--c-on-dark); text-decoration:none;">Instagram</a>
+            <a href="#" class="pill-out" style="padding:9px 18px; border:1px solid color-mix(in srgb,var(--c-on-dark) 30%,transparent); border-radius:var(--r-btn); font-size:13px; letter-spacing:.06em; color:var(--c-on-dark); text-decoration:none;">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id="map-wrap" style="border-radius:var(--r-card); overflow:hidden; box-shadow:0 30px 70px -40px rgba(0,0,0,.8); height:340px;">
+          <iframe title="Carte — Le Namal" src="https://www.openstreetmap.org/export/embed.html?bbox=4.8500%2C45.7635%2C4.8660%2C45.7705&amp;layer=mapnik&amp;marker=45.7670%2C4.8580" style="width:100%; height:100%; border:0; filter:grayscale(.5) contrast(.95);"></iframe>
+        </div>
+        <a href="https://www.openstreetmap.org/?mlat=45.7670&amp;mlon=4.8580#map=17/45.7670/4.8580" target="_blank" rel="noopener" class="map-link" style="display:inline-block; margin-top:12px; font-size:13px; letter-spacing:.06em; color:var(--c-on-dark-muted); text-decoration:none;">Ouvrir dans la carte →</a>
+      </div>
+    </div>
+
+    <!-- ===== CERTIFICATION CASHER ===== -->
+    <div style="margin-top:clamp(56px,7vw,90px); padding-top:clamp(44px,5.5vw,68px); border-top:1px solid color-mix(in srgb,var(--c-on-dark) 12%,transparent); display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px;">
+      <svg viewBox="0 0 200 200" width="132" height="132" style="color:var(--c-on-dark); flex-shrink:0;">
+        <defs>
+          <path id="casherArcTop" d="M100,100 m-80,0 a80,80 0 1,1 160,0" fill="none"></path>
+          <path id="casherArcBot" d="M100,100 m-80,0 a80,80 0 1,0 160,0" fill="none"></path>
+        </defs>
+        <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="0.9"></circle>
+        <text style="font-family:var(--f-head);" font-size="12.5" font-weight="600" letter-spacing="3.4" fill="currentColor"><textPath href="#casherArcTop" startOffset="50%" text-anchor="middle">CERTIFIÉ CASHER</textPath></text>
+        <text style="font-family:var(--f-head);" font-size="12.5" font-weight="600" letter-spacing="2.6" fill="currentColor"><textPath href="#casherArcBot" startOffset="50%" text-anchor="middle">SUPERVISION RABBINIQUE</textPath></text>
+        <path d="M100,58 L119,91 L81,91 Z" fill="none" stroke="currentColor" stroke-width="2"></path>
+        <path d="M100,108 L81,75 L119,75 Z" fill="none" stroke="currentColor" stroke-width="2"></path>
+        <text x="100" y="138" text-anchor="middle" style="font-family:var(--f-head);" font-weight="700" font-size="15" letter-spacing="3" fill="currentColor">CASHER</text>
+      </svg>
+      <div>
+        <span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(26px,3.4vw,40px); color:var(--c-on-dark); line-height:1;">Maison</span>
+        <span style="font-family:var(--f-script); font-size:clamp(40px,4.8vw,60px); color:var(--c-on-dark); line-height:.7; margin-left:8px;">certifiée casher</span>
+      </div>
+      <p style="font-family:var(--f-serif); font-style:italic; font-size:clamp(18px,2.1vw,22px); color:var(--c-on-dark-muted); max-width:560px; margin:0; line-height:1.5;">Tous nos produits sont choisis et préparés dans le strict respect de la cacheroute, sous supervision rabbinique. Une exigence qu'Ethan &amp; Lily portent à chaque service.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:4px;">
+        <span style="font-family:var(--f-body),sans-serif; font-size:12.5px; letter-spacing:.06em; padding:8px 16px; border:1px solid color-mix(in srgb,var(--c-on-dark) 28%,transparent); border-radius:var(--r-btn); color:var(--c-on-dark);">Sous supervision rabbinique</span>
+        <span style="font-family:var(--f-body),sans-serif; font-size:12.5px; letter-spacing:.06em; padding:8px 16px; border:1px solid color-mix(in srgb,var(--c-on-dark) 28%,transparent); border-radius:var(--r-btn); color:var(--c-on-dark);">Sélection rigoureuse</span>
+        <span style="font-family:var(--f-body),sans-serif; font-size:12.5px; letter-spacing:.06em; padding:8px 16px; border:1px solid color-mix(in srgb,var(--c-on-dark) 28%,transparent); border-radius:var(--r-btn); color:var(--c-on-dark);">Cuisine 100% casher</span>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(40px,5vw,64px); padding:30px 0; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; border-top:1px solid color-mix(in srgb,var(--c-on-dark) 12%,transparent);">
+      <span style="display:flex; align-items:center;"><img src="img/logo-light.png" alt="Le Namal" style="height:54px; width:auto; display:block;" onerror="logoFallback(this)"><svg style="height:58px; width:auto; display:none; color:var(--c-on-dark);" viewBox="0 0 240 240"><use href="#emblem"/></svg></span>
+      <div style="font-family:var(--f-serif); font-style:italic; font-size:17px; color:var(--c-on-dark-muted); text-align:center;">Le goût du vrai, le sens de la table.</div>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <span style="font-size:12.5px; color:var(--c-on-dark-muted);">© 2026 Le Namal · Lyon</span>
+        <button id="openAdmin" class="ethan-btn" style="background:none; border:none; cursor:pointer; font-family:var(--f-body),sans-serif; font-size:12px; letter-spacing:.08em; color:var(--c-on-dark-muted); text-decoration:underline; text-underline-offset:3px;">Espace Ethan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN OVERLAY ============ -->
+<div id="adminOverlay" hidden style="position:fixed; inset:0; z-index:90; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--c-bg); border-radius:var(--r-card); width:100%; max-width:760px; max-height:88vh; overflow:auto; box-shadow:0 50px 100px -40px rgba(0,0,0,.7);">
+    <div style="position:sticky; top:0; background:var(--c-ink); color:var(--c-on-dark); padding:18px 26px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:var(--f-head); font-weight:600; text-transform:uppercase; letter-spacing:.1em; font-size:15px;">Espace Ethan</span><span style="font-family:var(--f-script); font-size:24px; color:var(--c-on-dark-muted);">réservations</span></div>
+      <button id="closeAdmin" style="background:none; border:none; color:var(--c-on-dark); font-size:24px; cursor:pointer; line-height:1;">×</button>
+    </div>
+
+    <div id="adminLock" style="padding:48px 36px; text-align:center;">
+      <p style="font-family:var(--f-serif); font-style:italic; font-size:20px; color:var(--c-muted); margin:0 0 20px;">Accès réservé — entrez le code.</p>
+      <input id="adminPass" type="password" class="fld" placeholder="Code d'accès" style="width:240px; padding:13px 16px; border:1px solid color-mix(in srgb,var(--c-ink) 20%,transparent); border-radius:var(--r-input); background:#fff; font-family:var(--f-body),sans-serif; font-size:15px; text-align:center;">
+      <div class="err" id="adminErr" style="text-align:center;"></div>
+      <div style="margin-top:18px;"><button id="adminEnter" class="btn-ink" style="background:var(--c-ink); color:var(--c-on-dark); border:none; font-family:var(--f-head); font-weight:500; letter-spacing:.1em; text-transform:uppercase; font-size:13px; padding:13px 30px; border-radius:var(--r-btn); cursor:pointer;">Entrer</button></div>
+      <div style="margin-top:14px; font-size:12px; color:var(--c-label);">Code par défaut : namal69</div>
+    </div>
+
+    <div id="adminPanel" hidden style="padding:24px 26px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+        <div style="font-size:14px; color:var(--c-muted);"><strong id="resCount" style="color:var(--c-ink); font-size:22px; font-family:var(--f-head);">0</strong> &nbsp;réservation(s) reçue(s)</div>
+      </div>
+      <div id="resList" style="display:flex; flex-direction:column; gap:12px;"></div>
+      <div style="margin-top:22px; padding:16px 18px; background:var(--c-bg2); border-radius:var(--r-input); font-size:12.5px; color:var(--c-muted); line-height:1.6;">
+        <strong style="color:var(--c-ink);">Notifications.</strong> Les réservations sont enregistrées sur cet appareil. L'envoi d'email au restaurant + accusé client et la notification téléphone sont prêts à brancher dans <code>app.js</code> (fonctions <code>notifyRestaurant</code>, <code>notifyClient</code>, <code>notifyWebhook</code>).
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .err{ color:#b0402e; font-size:12.5px; margin-top:6px; }
+  .err:empty{ display:none; }
+  [hidden]{ display:none !important; }
+</style>
+
+<script src="app.js"></script>
+</body>
+</html>
