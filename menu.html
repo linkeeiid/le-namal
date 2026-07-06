@@ -40,6 +40,29 @@
     .nav-cta{ display:none !important; }
   }
 </style>
+<style>
+  .m-head{ text-align:center; margin-bottom:40px; }
+  .m-label{ font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label); }
+  .m-div{ display:flex; align-items:center; justify-content:center; gap:12px; margin:12px 0 6px; }
+  .m-div span{ width:34px; height:1px; background:color-mix(in srgb,var(--c-ink) 30%,transparent); }
+  .m-div i{ color:var(--c-ink); opacity:.5; font-size:10px; letter-spacing:.3em; font-style:normal; }
+  .m-w1{ font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(28px,3.8vw,44px); color:var(--c-ink); line-height:1; }
+  .m-w2{ font-family:var(--f-script); font-size:clamp(40px,5.2vw,64px); color:var(--c-script); line-height:.7; margin-left:8px; }
+  .m-note{ font-family:var(--f-serif); font-style:italic; font-size:16px; color:var(--c-muted); margin-top:12px; }
+  .m-allprice{ display:inline-block; margin-top:14px; font-family:var(--f-head); font-weight:600; font-size:14px; letter-spacing:.06em; color:var(--c-ink); border:1px solid color-mix(in srgb,var(--c-ink) 22%,transparent); border-radius:999px; padding:6px 18px; }
+  .m-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:2px 56px; }
+  .m-row{ display:grid; grid-template-columns:1fr auto; gap:18px; align-items:baseline; padding:15px 0; border-bottom:1px solid color-mix(in srgb,var(--c-ink) 10%,transparent); }
+  .m-name{ font-family:var(--f-head); font-weight:600; font-size:16.5px; letter-spacing:.02em; color:var(--c-ink); }
+  .m-desc{ font-family:var(--f-body),sans-serif; font-size:13px; color:var(--c-muted); line-height:1.5; margin-top:5px; max-width:380px; }
+  .m-pr{ font-family:var(--f-head); font-weight:600; font-size:16px; color:var(--c-ink); white-space:nowrap; }
+  .m-pr2{ color:var(--c-muted); font-weight:500; font-size:13.5px; }
+  .m-flavgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0 28px; max-width:780px; margin:0 auto; }
+  .m-flav{ font-family:var(--f-serif); font-size:18px; color:var(--c-text2); padding:9px 4px; border-bottom:1px solid color-mix(in srgb,var(--c-ink) 8%,transparent); text-align:center; }
+  .m-group{ margin-top:40px; }
+  .m-group:first-child{ margin-top:0; }
+  .m-ghead{ font-family:var(--f-head); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:15px; color:var(--c-ink); text-align:center; margin-bottom:16px; padding-bottom:9px; border-bottom:1px solid color-mix(in srgb,var(--c-ink) 16%,transparent); }
+  .m-ghint{ font-family:var(--f-body),sans-serif; font-weight:400; letter-spacing:.04em; text-transform:none; font-size:12px; color:var(--c-muted); margin-left:10px; }
+</style>
 <script>window.logoFallback=function(i){i.style.display='none';var s=i.nextElementSibling;if(s){s.style.display='block';}};</script>
 </head>
 <body>
@@ -165,58 +188,185 @@
 <script>
 (function () {
   var sections = [
-    { label:'Pour commencer', word1:'Nos', word2:'entrées', items:[
-      { name:'Houmous & Tahin', desc:"Pois chiches, citron, huile d'olive, za'atar, pain chaud.", price:'12 €' },
-      { name:'Aubergine fumée', desc:'Crème de sésame, grenade, herbes fraîches.', price:'13 €' },
-      { name:'Carpaccio de daurade', desc:'Agrumes, fenouil croquant, huile vierge.', price:'16 €' },
-      { name:'Falafel maison', desc:'Sauce yaourt aux herbes, crudités.', price:'10 €' },
-      { name:'Salade Namal', desc:'Jeunes pousses, betterave, noix, vinaigrette au miel.', price:'11 €' },
-      { name:'Bœuf séché', desc:'Pickles maison, pain grillé, huile pimentée.', price:'15 €' },
+    { t:'l', label:'Produit frais et selon arrivage', w1:'Nos', w2:'entrées', items:[
+      { name:'Carpaccio de bœuf', desc:"Pistou d'herbes, roquette et basilic.", price:'25 €' },
+      { name:'Œuf mollet', desc:'Crème de champignon, huile de truffe et œuf mollet.', price:'20 €' },
+      { name:'Œuf parfait by Namal', desc:'Crème de champignon au foie gras et œuf coulant.', price:'26 €' },
+      { name:'Tartare de poisson', desc:'Selon arrivage · Poisson en dés mariné et vierge de légumes.', price:'24 €' },
+      { name:'Foie gras by Namal', desc:'Tranche de foie gras, mâche, confiture du moment et ses toasts.', price:'34 €' },
+      { name:'Tataki de thon rouge', desc:'Selon arrivage · Thon snacké minute, pesto de basilic et ses condiments.', price:'26 €' },
+      { name:'Salade César', desc:'Poulet mariné, iceberg, endive, tomates cerises, oignons frais, croûtons maison, œuf mollet et sauce César Le Namal.', price:'20 €' },
+      { name:'Salade Parguit', desc:'Parguit, iceberg, endive, tomates cerises, oignons frais, croûtons maison, œuf mollet et sauce maison.', price:'20 €' },
+      { name:'Salade foie de volaille', desc:'Iceberg, salade israélienne, mâche, œuf mollet, foie de volaille et sauce chimichurri.', price:'20 €' },
     ]},
-    { label:'Le cœur du repas', word1:'Nos', word2:'plats', items:[
-      { name:'Entrecôte grillée', desc:'Pommes grenaille, jus corsé, beurre maître d’hôtel.', price:'32 €' },
-      { name:'Poulet au citron confit', desc:'Semoule parfumée, légumes de saison.', price:'24 €' },
-      { name:'Daurade entière rôtie', desc:'Tahini, herbes fraîches, citron.', price:'28 €' },
-      { name:'Côte de veau', desc:'Purée truffée, jus réduit.', price:'36 €' },
-      { name:'Couscous Namal', desc:'Légumes, pois chiches, viandes grillées.', price:'26 €' },
-      { name:'Risotto aux champignons', desc:'Crémeux, herbes, copeaux.', price:'22 €' },
+    { t:'l', label:'À partager', w1:'Nos', w2:'partagées', items:[
+      { name:'Pizza bassar', price:'25 €' },
+      { name:'Pizza entrecôte', price:'26 €' },
+      { name:'Houmous bassar', price:'19 €' },
+      { name:'Houmous entrecôte', price:'24 €' },
+      { name:'Houmous parguit', price:'19 €' },
+      { name:'Houmous poulet mariné', price:'19 €' },
+      { name:'Brick au thon', price:'12 €' },
+      { name:'Brick au bœuf', price:'10 €' },
+      { name:'Nems au poulet', price:'13 €' },
+      { name:'Tchachouka merguez et œuf coulant', price:'25 €' },
+      { name:'Tchachouka ventrèche de thon et œuf', price:'28 €' },
+      { name:'Assiette shawarma', price:'24 €' },
+      { name:'Assiette merguez', price:'19 €' },
+      { name:"Planche d'assortiment de charcuterie", price:'20 €' },
+      { name:'Planche de ventrèche de thon', price:'26 €' },
     ]},
-    { label:'Pour finir en douceur', word1:'Nos', word2:'desserts', items:[
-      { name:'Pavlova aux fruits rouges', desc:'Meringue, crème légère, fruits de saison.', price:'9 €' },
-      { name:'Moelleux chocolat', desc:'Cœur coulant, glace vanille.', price:'10 €' },
-      { name:"Salade d'agrumes", desc:'Fleur d’oranger, menthe fraîche.', price:'8 €' },
-      { name:'Sorbets maison', desc:'Trois parfums au choix.', price:'7 €' },
+    { t:'l', label:'Roulées maison', w1:'Nos', w2:'omelettes', items:[
+      { name:'La Forestière', desc:'Omelette roulée, crème de champignons frais, huile de truffe.', price:'16 €' },
+      { name:'La Merguez', desc:"Omelette roulée, merguez grillées, huile d'olive.", price:'18 €' },
+      { name:'La Kefta', desc:"Omelette roulée, kefta grillées, huile d'olive.", price:'18 €' },
+      { name:'La Kefta & Merguez', desc:"Omelette roulée, kefta & merguez, huile d'olive.", price:'20 €' },
+      { name:'La Parguit façon Namal', desc:"Omelette roulée, parguit mariné, huile d'olive.", price:'18 €' },
+    ]},
+    { t:'l', label:'Faits maison', w1:'Nos', w2:'burgers', items:[
+      { name:'Le Namal', desc:'Parguit pané, sauce burger, oignons confits, pickles de cornichons, tchachouka, iceberg, cheddar parvé.', price:'24 €' },
+      { name:'Le Sarona', desc:'Bœuf, sauce burger, oignons confits, tomates, pickles de cornichons, iceberg, cheddar parvé.', price:'20 €' },
+      { name:'Le Double Sarona', desc:'Double bœuf, sauce burger, oignons confits, pickles de cornichons, iceberg, cheddar parvé.', price:'25 €' },
+      { name:'Le Signature Namal', desc:'Bœuf, charcuterie, œuf, iceberg, oignons confits, tomates, cheddar parvé, cornichons, sauce burger maison.', price:'26 €' },
+      { name:'Le Dizengoff', desc:'Poulet pané, tomates, oignons confits, pickles de cornichons, iceberg, sauce mayonnaise, cheddar parvé.', price:'19 €' },
+      { name:'Le Pescadou', desc:'Dos de cabillaud pané, sauce fish maison, oignons confits, iceberg, tomates, cheddar parvé.', price:'18 €' },
+      { name:'Le Parguit pané', desc:'Parguit pané, sauce burger, oignons confits, pickles de cornichons, iceberg, cheddar parvé.', price:'22 €' },
+      { name:'Duo Le Namal', desc:'Le Sarona & Le Dizengoff.', price:'26 €' },
+    ]},
+    { t:'l', label:'Dans la hallah', w1:'Nos', w2:'hallots', items:[
+      { name:"L'Entrecôte", desc:'Entrecôte, salade israélienne, œuf poché, sauce chimichurri.', price:'22 €' },
+      { name:'La Parguit', desc:'Parguit, sauce cocktail, tomates, iceberg.', price:'19 €' },
+      { name:'La Kefta & Merguez', desc:'Kefta, merguez, salade israélienne, iceberg, mayonnaise et harissa.', price:'20 €' },
+      { name:'La Shnitzel', desc:'Poulet pané, salade israélienne, iceberg, oignons, sauce maison.', price:'18 €' },
+      { name:'Le Poulet grillé', desc:'Poulet grillé, salade israélienne, iceberg, oignons, sauce maison.', price:'17 €' },
+    ]},
+    { t:'l', label:'Servis avec frites maison', w1:'Nos', w2:'sandwichs', items:[
+      { name:'Parguit', desc:'Parguit mariné maison, salade israélienne, iceberg, sauce mayonnaise.', price:'18 €' },
+      { name:'Poulet grillé', desc:'Poulet grillé, salade israélienne, iceberg, sauce mayonnaise.', price:'17 €' },
+      { name:'Merguez', desc:'Merguez, salade israélienne, iceberg, mayonnaise, harissa.', price:'19 €' },
+      { name:'Entrecôte', desc:'Entrecôte, salade israélienne, iceberg, mayonnaise, sauce chimichurri.', price:'20 €' },
+      { name:'Kefta & Merguez', desc:'Kefta & merguez, iceberg, salade israélienne, mayonnaise.', price:'19 €' },
+      { name:'Kefta', desc:'Kefta de bœuf maison, iceberg et salade israélienne, mayonnaise.', price:'19 €' },
+    ]},
+    { t:'l', label:'À la découpe', w1:'Nos', w2:'viandes', items:[
+      { name:'Pavé de bœuf Rossini', desc:'Purée de pomme de terre maison et foie gras poêlé.', price:'59 €' },
+      { name:'Escalope milanaise Namal', desc:'Linguine à la tomate, veau pané.', price:'30 €' },
+      { name:'Ris de veau', desc:'Ris de veau grillé en persillade.', price:'45 €' },
+      { name:'Tartare de bœuf', desc:'Découpé au couteau et ses condiments, salade et frites maison.', price:'30 €' },
+    ]},
+    { t:'l', label:'Au feu de bois', w1:'Nos', w2:'grillades', note:'Accompagnements au choix : pâtes à la sauce, purée maison, frites maison, légumes du moment.', items:[
+      { name:"L'Entrecôte 350g", price:'38 €' },
+      { name:'Le Foie de veau', price:'32 €' },
+      { name:'La Côte de veau', price:'38 €' },
+      { name:"Les Côtelettes d'agneau", price:'36 €' },
+      { name:'La Merguez & Kefta', price:'28 €' },
+      { name:'Les Merguez', price:'26 €' },
+      { name:'La Parguit façon Namal', price:'26 €' },
+      { name:'Le Poulet grillé', price:'25 €' },
+      { name:'Le Poulet pané', price:'27 €' },
+      { name:'Le Pavé de bœuf', price:'36 €' },
+      { name:'Le Mix Namal', price:'55 €' },
+      { name:'La Côte de bœuf', desc:'Selon arrivage.', price:'100 €/kg' },
+      { name:"L'Épaule d'agneau", desc:'Selon arrivage.', price:'110 €/kg' },
+    ]},
+    { t:'f', label:'Pour finir en douceur', w1:'Nos', w2:'desserts', priceAll:'12 €', items:[
+      { name:'Royal chocolat' }, { name:'Fraisier' }, { name:'Forêt noire' }, { name:'Tarte citron meringuée' },
+      { name:'Citron' }, { name:'Framboise' }, { name:'Noisette' }, { name:'Cacahuète' },
+      { name:'Pistache' }, { name:'Café' }, { name:'Mangue' },
+    ]},
+    { t:'f', label:'Onctueux', w1:'Nos', w2:'tiramisu', priceAll:'10 €', items:[
+      { name:'Spéculoos' }, { name:'Chocolat' }, { name:'Pistache' }, { name:'Choco-noisette' },
+      { name:'Praliné noisette' }, { name:'Fruit du moment' },
+    ]},
+    { t:'g', label:'La cave', w1:'Nos', w2:'vins', groups:[
+      { h:'Vins rouges', hint:'75 cl', items:[
+        { name:'Gamla, Cabernet Sauvignon 2020', price:'49 €' },
+        { name:'Yron Galit 2019', price:'79 €' },
+        { name:'Marphella, Cabernet Merlot 2019', price:'99 €' },
+        { name:"Isaa'c Raam, Cabernet Franc 2019", price:'99 €' },
+        { name:'Joseph, Cabernet Sauvignon 2021', price:'39 €' },
+        { name:'Grand Castelland, Bordeaux 2022', price:'32 €' },
+        { name:'Barkan Altitude, Cabernet Sauvignon 2010', price:'25 €' },
+        { name:"La Source d'Eli, Côtes du Rhône 2020", price:'59 €' },
+        { name:'Bourgogne Hautes Côtes de Beaune 2021', price:'89 €' },
+        { name:'Château Hauteville, Saint-Estèphe 2022', price:'99 €' },
+        { name:'Recanati, Cabernet Sauvignon 2021', price:'35 €' },
+        { name:'Château La Naude, Bordeaux 2023 (37,5 cl)', price:'29 €' },
+        { name:'Domaine de Grava, Bordeaux 2022 (37,5 cl)', price:'29 €' },
+        { name:'Domaine de Corps de Loup, Côte Rôtie 2019', price:'129 €' },
+      ]},
+      { h:'Vins blancs', items:[
+        { name:'Yarden Gewürztraminer 2022', price:'30 €' },
+        { name:'Elysée Palace, Moelleux 2021', price:'26 €' },
+      ]},
+      { h:'Vins rosés', items:[
+        { name:"Éclat de Diamant, Gris du Sud, Pays d'Oc 2022", price:'25 €' },
+        { name:'R. Château Montaud, Côtes de Provence 2022', price:'26 €' },
+        { name:'Lampe de Méduse 2024', price:'49 €' },
+        { name:'Whispering Angel, Côtes de Provence 2023', price:'69 €' },
+        { name:'Minuty, Côtes de Provence 2023', price:'49 €' },
+      ]},
+      { h:'Champagnes', items:[
+        { name:'Moscato', price:'22 €' },
+        { name:'Champagne Laurent-Perrier Brut', price:'119 €' },
+      ]},
+    ]},
+    { t:'g', label:'À boire', w1:'Nos', w2:'boissons', groups:[
+      { h:'Eaux', hint:'50 cl / 1 L', items:[
+        { name:'Evian', price:'4 €', price2:'6 €' },
+        { name:'San Pellegrino', price:'4 €', price2:'6 €' },
+      ]},
+      { h:'Bières', flavors:true, priceAll:'6 €', items:[
+        { name:'Heineken' }, { name:'1664' }, { name:'Leffe' }, { name:'Panaché maison' }, { name:'Peroni' },
+        { name:'Maccabi' }, { name:'Casablanca' }, { name:'Corona pression' }, { name:'Monaco' },
+      ]},
+      { h:'Softs', flavors:true, priceAll:'5 €', items:[
+        { name:'Coca-Cola' }, { name:'Coca-Cola Zéro' }, { name:'Fuze Tea' }, { name:'Schweppes' }, { name:'Orangina' },
+        { name:'Red Bull' }, { name:'Seven Up' }, { name:'Limonade Lorina' }, { name:'Fanta' }, { name:"Sirop à l'eau" }, { name:'Perrier' },
+      ]},
+      { h:'Alcools', hint:'verre 4 cl / bouteille 70 cl', items:[
+        { name:'Vodka « Belvedere »', price:'10 €', price2:'90 €' },
+        { name:'Whisky « Black Label »', price:'8 €', price2:'80 €' },
+        { name:"Whisky « Jack Daniel's »", price:'10 €', price2:'70 €' },
+        { name:'Anisette « Phénix »', price:'7 €', price2:'60 €' },
+        { name:'Boukha « Bokobsa »', price:'6 €', price2:'50 €' },
+        { name:'Ricard', price:'7 €' },
+        { name:'Martini Blanc', price:'7 €' },
+        { name:'Martini Rouge', price:'7 €' },
+        { name:'Limoncello', price:'5 €' },
+        { name:'Mentha', price:'5 €' },
+      ]},
     ]},
   ];
 
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function price(it){ if(!it.price) return ''; return '<div class="m-pr">'+esc(it.price)+(it.price2?' <span class="m-pr2">/ '+esc(it.price2)+'</span>':'')+'</div>'; }
+  function rowList(it){ return '<div class="m-row"><div><div class="m-name">'+esc(it.name)+'</div>'+(it.desc?'<div class="m-desc">'+esc(it.desc)+'</div>':'')+'</div>'+price(it)+'</div>'; }
+  function rowFlav(it){ return '<div class="m-flav">'+esc(it.name)+'</div>'; }
+  function head(sec){
+    return '<div class="m-head">'+
+      '<div class="m-label">'+esc(sec.label)+'</div>'+
+      '<div class="m-div"><span></span><i>◇◇◇</i><span></span></div>'+
+      '<div><span class="m-w1">'+esc(sec.w1)+'</span><span class="m-w2">'+esc(sec.w2)+'</span></div>'+
+      (sec.note?'<div class="m-note">'+esc(sec.note)+'</div>':'')+
+      (sec.priceAll?'<div class="m-allprice">'+esc(sec.priceAll)+'</div>':'')+
+    '</div>';
+  }
 
   var html = sections.map(function (sec) {
-    var items = sec.items.map(function (it) {
-      return '<div style="display:grid; grid-template-columns:62px 1fr auto; gap:16px; align-items:start; padding:18px 0; border-bottom:1px solid color-mix(in srgb,var(--c-ink) 10%,transparent);">' +
-        '<div class="islot" data-shape="rounded" style="width:62px; height:62px;">Photo</div>' +
-        '<div>' +
-          '<div style="font-family:var(--f-head); font-weight:600; font-size:17px; letter-spacing:.02em; color:var(--c-ink);">' + esc(it.name) + '</div>' +
-          '<div style="font-size:13.5px; color:var(--c-muted); line-height:1.5; margin-top:5px; max-width:340px;">' + esc(it.desc) + '</div>' +
-        '</div>' +
-        '<div style="font-family:var(--f-head); font-weight:600; font-size:16px; color:var(--c-ink); white-space:nowrap;">' + esc(it.price) + '</div>' +
-      '</div>';
-    }).join('');
-    return '<div>' +
-      '<div style="text-align:center; margin-bottom:42px;">' +
-        '<div style="font-family:var(--f-head); font-weight:600; letter-spacing:.24em; text-transform:uppercase; font-size:12px; color:var(--c-label);">' + esc(sec.label) + '</div>' +
-        '<div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:12px 0 6px;">' +
-          '<span style="width:34px; height:1px; background:color-mix(in srgb,var(--c-ink) 30%,transparent);"></span>' +
-          '<span style="color:var(--c-ink); opacity:.5; font-size:10px; letter-spacing:.3em;">&#9671;&#9671;&#9671;</span>' +
-          '<span style="width:34px; height:1px; background:color-mix(in srgb,var(--c-ink) 30%,transparent);"></span>' +
-        '</div>' +
-        '<div>' +
-          '<span style="font-family:var(--f-head); font-weight:700; text-transform:uppercase; font-size:clamp(28px,3.8vw,44px); color:var(--c-ink); line-height:1;">' + esc(sec.word1) + '</span>' +
-          '<span style="font-family:var(--f-script); font-size:clamp(40px,5.2vw,64px); color:var(--c-script); line-height:.7; margin-left:8px;">' + esc(sec.word2) + '</span>' +
-        '</div>' +
-      '</div>' +
-      '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:8px 56px;">' + items + '</div>' +
-    '</div>';
+    var body;
+    if (sec.t === 'f') {
+      body = '<div class="m-flavgrid">'+sec.items.map(rowFlav).join('')+'</div>';
+    } else if (sec.t === 'g') {
+      body = sec.groups.map(function (g) {
+        var hint = g.priceAll ? '<span class="m-ghint">'+esc(g.priceAll)+'</span>' : (g.hint ? '<span class="m-ghint">'+esc(g.hint)+'</span>' : '');
+        var inner = g.flavors ? '<div class="m-flavgrid">'+g.items.map(rowFlav).join('')+'</div>' : '<div class="m-grid">'+g.items.map(rowList).join('')+'</div>';
+        return '<div class="m-group"><div class="m-ghead">'+esc(g.h)+hint+'</div>'+inner+'</div>';
+      }).join('');
+    } else {
+      body = '<div class="m-grid">'+sec.items.map(rowList).join('')+'</div>';
+    }
+    return '<div>'+head(sec)+body+'</div>';
   }).join('');
   document.getElementById('menuRoot').innerHTML = html;
 
