@@ -1,0 +1,26 @@
+# robots.txt — Le Namal
+# Actif seulement quand le site aura son propre nom de domaine
+# (sur linkeeiid.github.io/le-namal/, seul le robots.txt de la racine du domaine est lu).
+
+User-agent: *
+Allow: /
+
+# Moteurs de réponse / IA — autorisés pour que le restaurant puisse être cité
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://linkeeiid.github.io/le-namal/sitemap.xml

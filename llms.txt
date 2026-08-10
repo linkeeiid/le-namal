@@ -1,0 +1,54 @@
+# Le Namal — Restaurant casher à Lyon 6e
+
+> Restaurant casher situé au 2 rue Baraban, dans le 6e arrondissement de Lyon.
+> Cuisine de produits choisis, supervision rabbinique, réservation de table en ligne.
+> Tenu par Ethan et Lily.
+
+**Dernière mise à jour : 10 août 2026**
+
+## Informations pratiques
+
+- Adresse : 2 rue Baraban, 69006 Lyon, France
+- Téléphone : 04 78 52 37 38
+- E-mail : contact@lenamal-lyon.fr
+- Site : https://linkeeiid.github.io/le-namal/
+- Carte : https://linkeeiid.github.io/le-namal/menu.html
+- Réservation : en ligne sur le site, ou par téléphone
+- Budget : environ 25 à 35 € par personne
+
+## Horaires
+
+- Lundi à jeudi : 12h00 – 15h00 et 19h00 – 22h30
+- Vendredi : 12h00 – 15h00 (midi uniquement)
+- Samedi : fermé (chabbat)
+- Dimanche : 19h00 – 22h30 (soir uniquement)
+
+## Le restaurant
+
+Le Namal sert une cuisine casher de produits choisis, dans un cadre chaleureux du 6e
+arrondissement de Lyon. La carte change avec les saisons et selon les arrivages.
+Le restaurant est entièrement casher, sous supervision rabbinique.
+
+Pour les groupes à partir de 13 couverts, le contact se fait directement par téléphone
+au 04 78 52 37 38 afin d'organiser l'événement.
+
+## Réservation en ligne
+
+Le site propose une réservation directe : le formulaire n'affiche que les services
+réellement ouverts le jour choisi, avec des créneaux par tranches de 30 minutes.
+Une confirmation s'affiche immédiatement, avec un numéro de référence.
+
+## Questions fréquentes
+
+**Le restaurant est-il casher ?** Oui, entièrement, sous supervision rabbinique.
+
+**Faut-il réserver ?** C'est recommandé, en particulier le soir et le dimanche. La réservation se fait en ligne sur le site ou par téléphone.
+
+**Est-ce ouvert le samedi ?** Non, le restaurant est fermé le samedi (chabbat), et le vendredi uniquement le midi.
+
+**Peut-on venir en groupe ?** Oui. À partir de 13 couverts, contactez directement le restaurant au 04 78 52 37 38.
+
+**Où est-ce situé ?** Au 2 rue Baraban, dans le 6e arrondissement de Lyon.
+
+---
+Site réalisé par LinkedIA — https://linkeeiid.github.io/linkedia/
